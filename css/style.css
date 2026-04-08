@@ -1,0 +1,223 @@
+:root {
+  --bg-color-red: #8b0000; /* Un rojo más profundo tipo Netflix */
+  --bg-color-dark: #141414; /* Fondo oscuro para el menú móvil */
+  --bg-color-orange: orange;
+  --font-color-white: #ffffff;
+
+  /* Colores de shadows */
+  --white-shadow: #ffff;
+  --black-shadow: rgba(0,0,0,3);
+
+  /* Paddings y márgenes */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 1rem;     /* 16px */
+  --space-md: 2rem;     /* 32px */
+  --space-lg: 4rem;     /* 64px */
+  --space-xl: 8rem;     /* 128px */
+
+  --transition-speed: 0.4s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body { 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header principal */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4%;
+  background-color: var(--bg-color-red);
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__logo {
+  height: 35px;
+  display: block;
+}
+
+/* Navegación y Contenedor */
+.nav__container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  
+  --icon-toggle-menu: url("../src/images/open-menu.svg");
+  --transform-menu-show: translateX(-100%);
+}
+
+.nav__list {
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg-color-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  list-style: none;
+  
+  transform: var(--transform-menu-show);
+  transition: transform var(--transition-speed) ease-in-out;
+  z-index: 50;
+}
+
+.nav__container:has(.nav__input:checked) {
+  --icon-toggle-menu: url("../src/images/close-menu.svg");
+  --transform-menu-show: translateX(0);
+}
+
+.nav__input {
+  display: none;
+}
+
+.nav__toggle {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-image: var(--icon-toggle-menu);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  z-index: 60;
+  transition: transform 0.2s;
+}
+
+.nav__link {
+  color: var(--font-color-white);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav__link:hover {
+  color: var(--bg-color-red);
+}
+
+/* Acciones de usuario */
+.user_actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.img__user {
+  height: 30px;
+}
+
+@media (min-width: 768px) {
+  .nav__toggle {
+    display: none;
+  }
+
+  .nav__list {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    background-color: transparent;
+    padding: 0;
+    gap: 1.5rem;
+    height: auto;
+  }
+
+  .nav__link {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: normal;
+    text-transform: none;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav__item:hover {
+    background-color: var(--bg-color-orange);
+    color: var(--bg-color-red);
+    border-radius: 15px;
+  }
+}
+
+.container__catalogo {
+  text-align: center;
+  margin-top: var(--space-lg);
+}
+
+.catalogo {
+  margin: var(--space-md) var(--space-md);
+}
+
+.film__container {
+  border: 2px solid var(--border-gray);
+  padding: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  border-radius: 15px;
+}
+
+.img__film {
+  height: 160px;
+}
+
+.img__film:hover {
+  box-shadow: 0 10px 20px var(--black-shadow);
+}
+
+@media (min-width: 760px) and (max-width: 1199px) {
+  .catalogo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-md);
+    width: 100%;
+    margin: var(--space-md) 0;
+  }
+
+  .img__film {
+    height: 200px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .catalogo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: var(--space-md);
+    width: 100%;
+    margin: var(--space-md) 0;
+  }
+
+  .img__film {
+    height: 200px;
+  }
+}
+
+
+.footer {
+  background-color: var(--bg-color-dark);
+  color: var(--font-color-white);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.footer p:first-child {
+  margin-bottom: var(--space-sm);
+}
+
+.social-media {
+  display: flex;
+  flex-direction: row;
+  padding-top: var(--space-md);
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.img__social {
+  height: 50px;
+}
