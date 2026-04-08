@@ -1,7 +1,11 @@
 :root {
+  /* Color de fondo */
   --bg-color-red: #8b0000; /* Un rojo más profundo tipo Netflix */
   --bg-color-dark: #141414; /* Fondo oscuro para el menú móvil */
   --bg-color-orange: orange;
+
+  /* Colores de fuente */
+  --font-color-red: #8b0000;
   --font-color-white: #ffffff;
 
   /* Colores de shadows */
@@ -151,6 +155,10 @@ body {
   margin-top: var(--space-lg);
 }
 
+.container__catalogo h2{
+  color: var(--font-color-red);
+}
+
 .catalogo {
   margin: var(--space-md) var(--space-md);
 }
@@ -168,6 +176,20 @@ body {
 
 .img__film:hover {
   box-shadow: 0 10px 20px var(--black-shadow);
+}
+
+@media (min-width: 400px) and (max-width: 759px) {
+  .catalogo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    width: 100%;
+    margin: var(--space-md) 0;
+  }
+
+  .img__film {
+    height: 200px;
+  }
 }
 
 @media (min-width: 760px) and (max-width: 1199px) {
